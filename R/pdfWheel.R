@@ -8,7 +8,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-pdfWheel <- function(path, buttons = TRUE, width = NULL, height = NULL, elementId = NULL) {
+pdfWheel <- function(name, path, buttons = TRUE, width = NULL, height = NULL, elementId = NULL) {
 
   # Get number of pages from the page directory
   pages <- length(list.files(path))
@@ -21,7 +21,7 @@ pdfWheel <- function(path, buttons = TRUE, width = NULL, height = NULL, elementI
   )
 
   # create widget
-  htmlwidgets::createWidget(
+  widget <- htmlwidgets::createWidget(
     name = "pdfWheel",
     x,
     width = width,
@@ -29,11 +29,17 @@ pdfWheel <- function(path, buttons = TRUE, width = NULL, height = NULL, elementI
     package = 'pdfWheel',
     elementId = elementId
   )
+
+
+  list(widget = widget,
+       nextPage = function() htmlwidgets::JS(print(paste0("HTMLWidgets.getInstance(", name, ").nextPage();"))),
+       prevPage = function() htmlwidgets::JS(paste0("HTMLWidgets.getInstance(", name, ").prevPage();")),
+       changePage = function(page) htmlwidgets::JS(paste0("HTMLWidgets.getInstance(", name, ").changePage(", page, ");")))
 }
 
-#' Shiny bindings for pdfWidget
+#' Shiny bindings for pdfWheel
 #'
-#' Output and render functions for using pdfWidget within Shiny
+#' Output and render functions for using pdfWheel within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
