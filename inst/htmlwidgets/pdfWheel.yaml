@@ -1,0 +1,12 @@
+# (uncomment to add a dependency)
+dependencies:
+ - name: pdfWheel
+   version: 0.1.0
+   src: htmlwidgets
+   script:
+    # - pdfWheel.js
+   stylesheet:
+    - pdfWheel.css
+   attachment:
+    - forward.png
+    - backward.png

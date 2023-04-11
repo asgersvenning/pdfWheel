@@ -1,0 +1,63 @@
+.pdfwheel-output .pdfwheel-control {
+  display: block;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.pdfwheel-output .pdfwheel-control:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.pdfwheel-output .pdfwheel-control:hover img.pdfwheel-control-icon {
+  opacity: 1;
+}
+
+.pdfwheel-output .pdfwheel-control-next {
+  right: 0;
+}
+
+.pdfwheel-output .pdfwheel-control-prev {
+  left: 0;
+}
+
+.pdfwheel-control img.pdfwheel-control-icon {
+  opacity: 0.25;
+  background: transparent;
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  transform: translateY(-50%);
+  top: 50%;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pdfwheel-control img.pdfwheel-control-icon:focus {
+  outline: none !important;
+}
+
+img.pdfwheel-output-page {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img.pdfwheel-output-page:focus {
+  outline: none !important;
+}
