@@ -58,10 +58,10 @@ function wheel(el, contents) {
       // There are buttons and "buttons", so we need to add the eventListeners either way
       var nextButton   = el.getElementsByClassName("pdfwheel-control-next");
       var prevButton   = el.getElementsByClassName("pdfwheel-control-prev");
-      nextButton.forEach(function(btn) {
+      Array.prototype.forEach.call(nextButton, function(btn) {
         holdit(btn, this.nextPage, 300, 30, 50);
       }.bind(this));
-      prevButton.forEach(function(btn) {
+      Array.prototype.forEach.call(prevButton, function(btn) {
         holdit(btn, this.prevPage, 300, 30, 50);
       }.bind(this));
 

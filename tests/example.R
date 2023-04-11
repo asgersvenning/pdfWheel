@@ -42,7 +42,7 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 
-
+library(pdfWheel)
 
 test <- pdfWheel("testWheel", "tests/pages", F)
 
