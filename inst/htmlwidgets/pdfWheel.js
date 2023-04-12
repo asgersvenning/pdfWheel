@@ -1,3 +1,7 @@
+Shiny.addCustomMessageHandler("pdfWheel-jsHook", function(code) {
+  eval(code);
+})
+
 function holdit(btn, action, start, speedup, minSpeed) {
     var t;
     var originalStart = start;
@@ -82,6 +86,7 @@ function wheel(el, contents) {
 
   wheel.prototype.changePage = function(page) {
     // Set the page number accordingly
+    this.currentPage = page;
     this.el.querySelector("span.pdfwheel-control.numeric-selector input").value = page;
     // Change the page
     this.el.querySelector(".pdfwheel-output img.pdfwheel-output-page").src = this.prefix + "/page_" + page + ".jpg";

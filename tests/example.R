@@ -11,7 +11,8 @@ ui <- fluidPage(
   fluidRow(
     pdfWheelOutput("testWheel", 400, 400 / 0.57),
     actionButton("nextPage", "Next Page"),
-    actionButton("prevPage", "Previous Page")
+    actionButton("prevPage", "Previous Page"),
+    numericInput("choosePage", "Choose Page", 1, 1, 498, 1)
   )
 )
 
@@ -29,22 +30,24 @@ server <- function(input, output, session) {
   print(str(wheel))
 
   observeEvent(input$nextPage, {
-    JS("GARBLR")
-    JS("HTMLWidgets.getInstance(testWheel).nextPage();")
     wheel$nextPage()
   })
 
   observeEvent(input$prevPage, {
     wheel$prevPage()
   })
+
+  observeEvent(input$choosePage, {
+    wheel$changePage(page = input$choosePage)
+  })
 }
 
 
 shinyApp(ui, server)
 
-library(pdfWheel)
-
-test <- pdfWheel("testWheel", "tests/pages", F)
-
-test$widget
-test$prevPage()
+# library(pdfWheel)
+#
+# test <- pdfWheel("testWheel", "tests/pages", F)
+#
+# test$widget
+# test$prevPage()

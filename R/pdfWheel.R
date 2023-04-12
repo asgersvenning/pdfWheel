@@ -30,11 +30,21 @@ pdfWheel <- function(name, path, buttons = TRUE, width = NULL, height = NULL, el
     elementId = elementId
   )
 
+  JSHook <- function(js_function, n = 1) function(...) {
+    # I cannot find a better way to do this, since I need both some local variables "name", otherwise the user would need supply these every time, and at the same time I need to have access to session, which is in the server function...
+    eval(
+      parse(
+        text = paste0('session$sendCustomMessage("pdfWheel-jsHook", "HTMLWidgets.getInstance(', name, ').', js_function, '(', if (missing(...)) "" else rjson::toJSON(...), ');")')
+      ),
+      parent.frame(n = n))
+  }
+
 
   list(widget = widget,
-       nextPage = function() htmlwidgets::JS(print(paste0("HTMLWidgets.getInstance(", name, ").nextPage();"))),
-       prevPage = function() htmlwidgets::JS(paste0("HTMLWidgets.getInstance(", name, ").prevPage();")),
-       changePage = function(page) htmlwidgets::JS(paste0("HTMLWidgets.getInstance(", name, ").changePage(", page, ");")))
+       nextPage = JSHook("nextPage"),
+       prevPage = JSHook("prevPage"),
+       changePage = function(page) if (!missing(page) && is.integer(page) && page > 0) JSHook("changePage", 2)(page) else warning("Page must be a positive integer.")
+       )
 }
 
 #' Shiny bindings for pdfWheel
