@@ -43,7 +43,7 @@ pdfWheel <- function(name, path, buttons = TRUE, width = NULL, height = NULL, el
   list(widget = widget,
        nextPage = JSHook("nextPage"),
        prevPage = JSHook("prevPage"),
-       changePage = function(page) if (!missing(page) && is.numeric(page) && page > 0) JSHook("changePage", 2)(page) else warning("Page must be a positive integer.")
+       changePage = function(page) if (!missing(page) && is.numeric(page) && page %% 1 == 0 && page > 0) JSHook("changePage", 2)(page) else warning("Page must be a positive integer.")
        )
 }
 
