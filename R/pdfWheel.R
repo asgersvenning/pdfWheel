@@ -6,6 +6,7 @@
 #' @param buttons a boolean, do you want next/previous page buttons beneath the embedding?
 #'
 #' @import htmlwidgets
+#' @importFrom rjson toJSON
 #'
 #' @export
 pdfWheel <- function(name, path, buttons = TRUE, width = NULL, height = NULL, elementId = NULL) {
