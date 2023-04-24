@@ -9,6 +9,9 @@ Description: A fast and easy way to embed pdfs in Rmarkdown documents or Shiny a
     The package is inspired by the "slickR" package, but instead of using the slick carousel, which cannot handle large pdfs,
     it relies on the user to split the pdf into pages, and then embeds the pages as images as needed. This makes it possible to
     embed large pdfs in Rmarkdown documents and Shiny apps, without creating a large html file with many hidden images.
+Imports:
+    rjson,
+    htmlwidgets
 License: None (yet)
 Encoding: UTF-8
 LazyData: true
